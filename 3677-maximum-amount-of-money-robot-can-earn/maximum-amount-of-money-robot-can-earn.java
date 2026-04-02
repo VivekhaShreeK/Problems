@@ -24,19 +24,10 @@ class Solution {
             return memo[i][j][k];
         }
         int res =
-            Math.max(
-                dfs(coins, memo, i + 1, j, k),
-                dfs(coins, memo, i, j + 1, k)
-            ) +
-            x;
+            Math.max(dfs(coins, memo, i + 1, j, k),dfs(coins, memo, i, j + 1, k)) + x;
         if (k > 0 && x < 0) {
-            res = Math.max(
-                res,
-                Math.max(
-                    dfs(coins, memo, i + 1, j, k - 1),
-                    dfs(coins, memo, i, j + 1, k - 1)
-                )
-            );
+            res = Math.max(res,Math.max(dfs(coins, memo, i + 1, j, k - 1),dfs(coins, memo, i, j + 1, k - 1))
+);
         }
         memo[i][j][k] = res;
         return res;
